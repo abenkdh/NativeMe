@@ -3,54 +3,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
   <com.google.android.gms.ads.formats.UnifiedNativeAdView
-      android:layout_height="350dp"
+      android:layout_height="wrap_content"
       android:layout_width="match_parent"
+      android:layout_centerInParent="true"
       android:id="@+id/native_ad_view"
-      android:background="@drawable/gnt_outline_shape"
       >
-      <android.support.constraint.ConstraintLayout
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent"
-          app:layout_constraintBottom_toBottomOf="parent"
-          android:layout_centerInParent="true"
-          android:padding="5dp"
-          android:id="@+id/background"
-          >
-
-        <com.google.android.gms.ads.formats.MediaView
-            android:id="@+id/media_view"
-            android:layout_margin="@dimen/gnt_no_size"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginTop="@dimen/gnt_no_margin"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/middle"
-            />
 
     <android.support.constraint.ConstraintLayout
-        android:layout_height="60dp"
-        android:layout_marginTop="@dimen/gnt_default_margin"
+        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/media_view"
-        app:layout_constraintBottom_toTopOf="@id/body"
-        android:id="@+id/middle"
+        android:layout_centerInParent="true"
+        android:background="@drawable/gnt_outline_shape"
         >
       <android.support.constraint.ConstraintLayout
 
           android:layout_width="@dimen/gnt_no_size"
           android:layout_height="@dimen/gnt_no_size"
+          android:layout_marginEnd="@dimen/gnt_default_margin"
+          android:layout_marginStart="@dimen/gnt_default_margin"
+          android:layout_marginTop="@dimen/gnt_default_margin"
+          android:layout_marginBottom="@dimen/gnt_default_margin"
+          app:layout_constraintDimensionRatio="H,4:1"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toTopOf="parent"
           app:layout_constraintBottom_toBottomOf="parent"
           android:orientation="horizontal"
+          android:id="@+id/background"
           >
         <ImageView
             android:id="@+id/icon"
@@ -58,11 +37,10 @@
             android:layout_weight="0"
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/gnt_no_margin"
-            android:layout_marginStart="@dimen/gnt_default_margin"
+            android:layout_marginStart="@dimen/gnt_no_margin"
             android:layout_marginBottom="@dimen/gnt_no_margin"
             android:layout_marginEnd="@dimen/gnt_no_margin"
             app:layout_constraintDimensionRatio="H,1:1"
-            android:scaleType="fitCenter"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -71,24 +49,28 @@
         <android.support.constraint.ConstraintLayout
             android:layout_width="@dimen/gnt_no_size"
             android:layout_height="@dimen/gnt_no_size"
+            android:layout_marginTop="@dimen/gnt_default_margin"
+            android:layout_marginBottom="@dimen/gnt_default_margin"
+            android:layout_marginStart="@dimen/gnt_default_margin"
+            android:layout_marginEnd="@dimen/gnt_default_margin"
             android:orientation="vertical"
             android:id="@+id/content"
-            android:layout_marginLeft="@dimen/gnt_default_margin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/icon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            >
+          >
           <LinearLayout
               android:id="@+id/headline"
               android:orientation="horizontal"
               android:layout_width="match_parent"
               android:layout_height="@dimen/gnt_no_size"
-              android:layout_weight="0.5"
+              android:layout_weight="@dimen/gnt_text_row_weight"
               app:layout_constraintBottom_toTopOf="@id/row_two"
               app:layout_constraintEnd_toEndOf="parent"
               app:layout_constraintStart_toStartOf="parent"
               app:layout_constraintTop_toTopOf="parent"
+              android:background="@color/gnt_test_background_color"
               >
 
             <TextView
@@ -115,8 +97,8 @@
               android:orientation="horizontal"
               android:layout_width="match_parent"
               android:layout_height="@dimen/gnt_no_size"
-              android:layout_weight="0.5"
-              app:layout_constraintBottom_toBottomOf="parent"
+              android:layout_weight="@dimen/gnt_text_row_weight"
+              app:layout_constraintBottom_toTopOf="@id/cta"
               app:layout_constraintEnd_toEndOf="parent"
               app:layout_constraintStart_toStartOf="parent"
               app:layout_constraintTop_toBottomOf="@id/headline"
@@ -178,42 +160,27 @@
                 ></TextView>
 
           </LinearLayout>
+          <Button
+              android:id="@+id/cta"
+              android:layout_width="match_parent"
+              android:layout_height="@dimen/gnt_no_size"
+              android:background="@color/gnt_blue"
+              android:textColor="@color/gnt_white"
+              android:lines="1"
+              app:layout_constraintBottom_toBottomOf="parent"
+              app:layout_constraintEnd_toEndOf="parent"
+              app:layout_constraintStart_toStartOf="parent"
+              app:layout_constraintTop_toBottomOf="@id/row_two"
+              />
 
 
         </android.support.constraint.ConstraintLayout>
 
 
       </android.support.constraint.ConstraintLayout>
-      </android.support.constraint.ConstraintLayout>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_margin="@dimen/gnt_no_size"
-            android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/gnt_default_margin"
-            android:paddingLeft="@dimen/gnt_default_margin"
-            android:id="@+id/body"
-            app:layout_constraintBottom_toTopOf="@id/cta"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/middle"
-            android:layout_marginBottom="@dimen/gnt_default_margin"
-            />
-        <Button
-            android:id="@+id/cta"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:background="@color/gnt_blue"
-            android:textColor="@color/gnt_white"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:lines="1"
-            android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/body"
-            />
 
-      </android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+
   </com.google.android.gms.ads.formats.UnifiedNativeAdView>
+
 </merge>

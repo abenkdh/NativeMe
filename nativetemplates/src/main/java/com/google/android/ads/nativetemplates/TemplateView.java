@@ -36,6 +36,9 @@ import com.google.android.gms.ads.formats.MediaView;
 import com.google.android.gms.ads.formats.NativeAd.Image;
 import com.google.android.gms.ads.formats.UnifiedNativeAd;
 import com.google.android.gms.ads.formats.UnifiedNativeAdView;
+import com.makeramen.roundedimageview.RoundedImageView;
+
+import me.zhanghai.android.materialratingbar.MaterialRatingBar;
 
 /** Base class for a template view. * */
 public class TemplateView extends FrameLayout {
@@ -47,7 +50,7 @@ public class TemplateView extends FrameLayout {
 
   private TextView primaryView;
   private TextView secondaryView;
-  private RatingBar ratingBar;
+  private MaterialRatingBar ratingBar;
   private TextView tertiaryView;
   private ImageView iconView;
   private MediaView mediaView;
@@ -227,18 +230,16 @@ public class TemplateView extends FrameLayout {
       secondaryView.setVisibility(GONE);
       ratingBar.setVisibility(VISIBLE);
       ratingBar.setMax(5);
+      ratingBar.setRating(3);
       nativeAdView.setStarRatingView(ratingBar);
     } else {
       secondaryView.setText(secondaryText);
       secondaryView.setVisibility(VISIBLE);
-      ratingBar.setVisibility(GONE);
     }
 
     if (icon != null) {
       iconView.setVisibility(VISIBLE);
       iconView.setImageDrawable(icon.getDrawable());
-    } else {
-      iconView.setVisibility(GONE);
     }
 
     if (tertiaryView != null) {
@@ -259,9 +260,9 @@ public class TemplateView extends FrameLayout {
   }
 
   public String getTemplateTypeName() {
-    if (templateType == R.layout.gnt_medium_template_view) {
+    if (templateType == R.layout.medium_size) {
       return MEDIUM_TEMPLATE;
-    } else if (templateType == R.layout.gnt_small_template_view) {
+    } else if (templateType == R.layout.small_size) {
       return SMALL_TEMPLATE;
     }
     return "";
@@ -275,7 +276,7 @@ public class TemplateView extends FrameLayout {
     try {
       templateType =
           attributes.getResourceId(
-              R.styleable.TemplateView_gnt_template_type, R.layout.gnt_medium_template_view);
+              R.styleable.TemplateView_gnt_template_type, R.layout.medium_size);
     } finally {
       attributes.recycle();
     }
@@ -292,11 +293,10 @@ public class TemplateView extends FrameLayout {
     secondaryView = (TextView) findViewById(R.id.secondary);
     tertiaryView = (TextView) findViewById(R.id.body);
 
-    ratingBar = (RatingBar) findViewById(R.id.rating_bar);
-    ratingBar.setEnabled(false);
+    ratingBar = findViewById(R.id.rating_bar);
 
     callToActionView = (Button) findViewById(R.id.cta);
-    iconView = (ImageView) findViewById(R.id.icon);
+    iconView = findViewById(R.id.icon);
     mediaView = (MediaView) findViewById(R.id.media_view);
     background = (ConstraintLayout) findViewById(R.id.background);
   }
