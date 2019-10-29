@@ -94,6 +94,7 @@ attr cardElevation
 attr cardMaxElevation
 attr cardPreventCornerOverlap
 attr cardUseCompatPadding
+attr cardViewStyle
 attr chainUseRtl
 attr checkboxStyle
 attr checkedTextViewStyle
@@ -150,6 +151,11 @@ attr editTextStyle
 attr elevation
 attr emptyVisibility
 attr expandActivityOverflowButtonDrawable
+attr fastScrollEnabled
+attr fastScrollHorizontalThumbDrawable
+attr fastScrollHorizontalTrackDrawable
+attr fastScrollVerticalThumbDrawable
+attr fastScrollVerticalTrackDrawable
 attr firstBaselineToTopHeight
 attr font
 attr fontFamily
@@ -181,6 +187,7 @@ attr itemPadding
 attr keylines
 attr lastBaselineToBottomHeight
 attr layout
+attr layoutManager
 attr layout_anchor
 attr layout_anchorGravity
 attr layout_behavior
@@ -287,6 +294,7 @@ attr radioButtonStyle
 attr ratingBarStyle
 attr ratingBarStyleIndicator
 attr ratingBarStyleSmall
+attr reverseLayout
 attr riv_border_color
 attr riv_border_width
 attr riv_corner_radius
@@ -310,11 +318,13 @@ attr showDividers
 attr showText
 attr showTitle
 attr singleChoiceItemLayout
+attr spanCount
 attr spinBars
 attr spinnerDropDownItemStyle
 attr spinnerStyle
 attr splitTrack
 attr srcCompat
+attr stackFromEnd
 attr state_above_anchor
 attr statusBarBackground
 attr subMenuArrow
@@ -419,6 +429,10 @@ color bright_foreground_inverse_material_dark
 color bright_foreground_inverse_material_light
 color bright_foreground_material_dark
 color bright_foreground_material_light
+color browser_actions_bg_grey
+color browser_actions_divider_color
+color browser_actions_text_color
+color browser_actions_title_color
 color button_material_dark
 color button_material_light
 color cardview_dark_background
@@ -459,7 +473,6 @@ color material_grey_850
 color material_grey_900
 color notification_action_color_filter
 color notification_icon_bg_color
-color notification_material_background_media_default_color
 color primary_dark_material_dark
 color primary_dark_material_light
 color primary_material_dark
@@ -557,6 +570,8 @@ dimen abc_text_size_subhead_material
 dimen abc_text_size_subtitle_material_toolbar
 dimen abc_text_size_title_material
 dimen abc_text_size_title_material_toolbar
+dimen browser_actions_context_menu_max_width
+dimen browser_actions_context_menu_min_padding
 dimen cardview_compat_inset_shadow
 dimen cardview_default_elevation
 dimen cardview_default_radius
@@ -569,6 +584,9 @@ dimen compat_notification_large_icon_max_height
 dimen compat_notification_large_icon_max_width
 dimen disabled_alpha_material_dark
 dimen disabled_alpha_material_light
+dimen fastscroll_default_thickness
+dimen fastscroll_margin
+dimen fastscroll_minimum_range
 dimen gnt_ad_indicator_bar_height
 dimen gnt_ad_indicator_bottom_margin
 dimen gnt_ad_indicator_height
@@ -593,6 +611,9 @@ dimen hint_alpha_material_dark
 dimen hint_alpha_material_light
 dimen hint_pressed_alpha_material_dark
 dimen hint_pressed_alpha_material_light
+dimen item_touch_helper_max_drag_scroll_per_frame
+dimen item_touch_helper_swipe_escape_max_velocity
+dimen item_touch_helper_swipe_escape_velocity
 dimen notification_action_icon_size
 dimen notification_action_text_size
 dimen notification_big_circle_margin
@@ -721,7 +742,6 @@ drawable tooltip_frame_dark
 drawable tooltip_frame_light
 font baloo
 font open_sans_light
-id action0
 id action_bar
 id action_bar_activity_content
 id action_bar_container
@@ -741,25 +761,21 @@ id action_mode_close_button
 id action_text
 id actions
 id activity_chooser_view_content
-id ad_advertiser
 id ad_attribution
-id ad_body
-id ad_call_to_action
-id ad_media
 id ad_notification_view
-id ad_price
-id ad_store
-id ad_view
 id add
 id alertTitle
-id asdasd
 id async
 id background
 id blocking
 id body
 id bottom
+id browser_actions_header_text
+id browser_actions_menu_item_icon
+id browser_actions_menu_item_text
+id browser_actions_menu_items
+id browser_actions_menu_view
 id buttonPanel
-id cancel_action
 id checkbox
 id chronometer
 id clamp
@@ -772,7 +788,6 @@ id decor_content_parent
 id default_activity_button
 id edit_query
 id end
-id end_padder
 id expand_activities_button
 id expanded_menu
 id forever
@@ -786,15 +801,14 @@ id image
 id info
 id invisible
 id italic
+id item_touch_helper_previous_elevation
 id left
 id line1
 id line3
 id listMode
 id list_item
-id media_actions
 id media_view
 id message
-id middle
 id mirror
 id multiply
 id native_ad_view
@@ -842,7 +856,6 @@ id src_atop
 id src_in
 id src_over
 id start
-id status_bar_latest_event_content
 id submenuarrow
 id submit_area
 id tabMode
@@ -897,20 +910,13 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
-layout gnt_medium_size
+layout browser_actions_context_menu_page
+layout browser_actions_context_menu_row
+layout medium_size
 layout notification_action
 layout notification_action_tombstone
-layout notification_media_action
-layout notification_media_cancel_action
-layout notification_template_big_media
-layout notification_template_big_media_custom
-layout notification_template_big_media_narrow
-layout notification_template_big_media_narrow_custom
 layout notification_template_custom_big
 layout notification_template_icon_group
-layout notification_template_lines_media
-layout notification_template_media
-layout notification_template_media_custom
 layout notification_template_part_chronometer
 layout notification_template_part_time
 layout select_dialog_item_material
@@ -918,8 +924,6 @@ layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout small_size
 layout support_simple_spinner_dropdown_item
-layout test_gnt
-layout tost
 string abc_action_bar_home_description
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description
@@ -1222,14 +1226,9 @@ style TextAppearance_AppCompat_Widget_Switch
 style TextAppearance_AppCompat_Widget_TextView_SpinnerItem
 style TextAppearance_Compat_Notification
 style TextAppearance_Compat_Notification_Info
-style TextAppearance_Compat_Notification_Info_Media
 style TextAppearance_Compat_Notification_Line2
-style TextAppearance_Compat_Notification_Line2_Media
-style TextAppearance_Compat_Notification_Media
 style TextAppearance_Compat_Notification_Time
-style TextAppearance_Compat_Notification_Time_Media
 style TextAppearance_Compat_Notification_Title
-style TextAppearance_Compat_Notification_Title_Media
 style TextAppearance_Widget_AppCompat_ExpandedMenu_Item
 style TextAppearance_Widget_AppCompat_Toolbar_Subtitle
 style TextAppearance_Widget_AppCompat_Toolbar_Title
@@ -1382,6 +1381,7 @@ styleable MenuView android_headerBackground android_horizontalDivider android_it
 styleable PopupWindow android_popupAnimationStyle android_popupBackground overlapAnchor
 styleable PopupWindowBackgroundState state_above_anchor
 styleable RecycleListView paddingBottomNoButtons paddingTopNoTitle
+styleable RecyclerView android_descendantFocusability android_orientation fastScrollEnabled fastScrollHorizontalThumbDrawable fastScrollHorizontalTrackDrawable fastScrollVerticalThumbDrawable fastScrollVerticalTrackDrawable layoutManager reverseLayout spanCount stackFromEnd
 styleable RoundedImageView android_scaleType riv_border_color riv_border_width riv_corner_radius riv_corner_radius_bottom_left riv_corner_radius_bottom_right riv_corner_radius_top_left riv_corner_radius_top_right riv_mutate_background riv_oval riv_tile_mode riv_tile_mode_x riv_tile_mode_y
 styleable SearchView android_focusable android_imeOptions android_inputType android_maxWidth closeIcon commitIcon defaultQueryHint goIcon iconifiedByDefault layout queryBackground queryHint searchHintIcon searchIcon submitBackground suggestionRowLayout voiceIcon
 styleable Spinner android_dropDownWidth android_entries android_popupBackground android_prompt popupTheme

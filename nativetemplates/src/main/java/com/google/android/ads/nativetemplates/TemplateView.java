@@ -20,15 +20,14 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 
 import android.os.Build;
-import android.support.annotation.RequiresApi;
-import android.support.constraint.ConstraintLayout;
+import androidx.annotation.RequiresApi;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.google.ads.nativetemplates.R;
@@ -36,7 +35,6 @@ import com.google.android.gms.ads.formats.MediaView;
 import com.google.android.gms.ads.formats.NativeAd.Image;
 import com.google.android.gms.ads.formats.UnifiedNativeAd;
 import com.google.android.gms.ads.formats.UnifiedNativeAdView;
-import com.makeramen.roundedimageview.RoundedImageView;
 
 import me.zhanghai.android.materialratingbar.MaterialRatingBar;
 
@@ -103,6 +101,17 @@ public class TemplateView extends FrameLayout {
       if (tertiaryView != null) {
         tertiaryView.setBackground(mainBackground);
       }
+    }
+
+    int secondaryTextColor = styles.getSecondaryTextColor();
+    if(secondaryTextColor != 0){
+      secondaryView.setTextColor(secondaryTextColor);
+      tertiaryView.setTextColor(secondaryTextColor);
+    }
+
+    int primaryTextColor = styles.getSecondaryTextColor();
+    if(primaryTextColor != 0){
+      primaryView.setTextColor(primaryTextColor);
     }
 
     Typeface primary = styles.getPrimaryTextTypeface();

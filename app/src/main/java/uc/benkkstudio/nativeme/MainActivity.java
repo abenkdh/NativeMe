@@ -3,13 +3,12 @@ package uc.benkkstudio.nativeme;
 
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.ads.nativetemplates.NativeTemplateStyle;
 import com.google.android.ads.nativetemplates.TemplateView;
 import com.google.android.gms.ads.AdLoader;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.formats.UnifiedNativeAd;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,7 +23,10 @@ public class MainActivity extends AppCompatActivity {
                 .forUnifiedNativeAd(new UnifiedNativeAd.OnUnifiedNativeAdLoadedListener() {
                     @Override
                     public void onUnifiedNativeAdLoaded(UnifiedNativeAd unifiedNativeAd) {
-                        NativeTemplateStyle styles = new NativeTemplateStyle.Builder().build();
+                        NativeTemplateStyle styles = new NativeTemplateStyle.Builder()
+                                .setSecondaryTextColor(getResources().getColor(R.color.colorAccent))
+                                .setPrimaryTextColor(getResources().getColor(R.color.colorAccent))
+                                .build();
                         my_template.setStyles(styles);
                         my_template.setNativeAd(unifiedNativeAd);
                     }

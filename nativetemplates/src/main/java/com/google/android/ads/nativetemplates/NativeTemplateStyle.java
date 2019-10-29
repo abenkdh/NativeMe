@@ -14,6 +14,7 @@
 
 package com.google.android.ads.nativetemplates;
 
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 
@@ -79,6 +80,18 @@ public class NativeTemplateStyle {
 
   // The background color for the bulk of the ad.
   private ColorDrawable mainBackgroundColor;
+
+  private int secondaryTextColor = 0;
+
+  private int primaryTextColor = 0;
+
+  public int getSecondaryTextColor(){
+    return secondaryTextColor;
+  }
+
+  public int getPrimaryTextColor(){
+    return secondaryTextColor;
+  }
 
   public Typeface getCallToActionTextTypeface() {
     return callToActionTextTypeface;
@@ -155,6 +168,16 @@ public class NativeTemplateStyle {
 
     public Builder() {
       this.styles = new NativeTemplateStyle();
+    }
+
+    public Builder setPrimaryTextColor(int primaryTextColor){
+      this.styles.primaryTextColor = primaryTextColor;
+      return this;
+    }
+
+    public Builder setSecondaryTextColor(int secondaryTextColor){
+      this.styles.secondaryTextColor = secondaryTextColor;
+      return this;
     }
 
     public Builder withCallToActionTextTypeface(Typeface callToActionTextTypeface) {
